@@ -1,8 +1,8 @@
 class Grus < Formula
   desc "Static site generator written in Scala supporting ScalaTags & Markdown."
   homepage "https://get-grus.io"
-  url "https://github.com/chipsenkbeil/grus/archive/v0.1.0.tar.gz"
-  sha256 "ee85720c5811f5434e6969875259ca5c725258b03172ed60a57208be2fa41208"
+  url "https://github.com/chipsenkbeil/grus/archive/v0.1.0-assembly.tar.gz"
+  sha256 "f3e66acebdae379c85356f53055363cd3c4a7ea5ca9deeba27063a5a8126f6c4"
   head "https://github.com/chipsenkbeil/grus.git"
 
   depends_on "sbt" => :build
