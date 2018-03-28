@@ -5,7 +5,7 @@ class Grus < Formula
   sha256 "b07d76c8d7972747f8d4b8e60cf069f78535d3f2583d8ab09f0bba7a8d3a43f1"
   head "https://github.com/chipsenkbeil/grus.git"
 
-  depends_on "sbt@13" => :build
+  depends_on "sbt@0.13" => :build
   depends_on :java => "1.7+"
 
   def install
