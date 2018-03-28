@@ -1,8 +1,8 @@
 class Grus < Formula
   desc "Static site generator written in Scala supporting ScalaTags & Markdown."
   homepage "https://get-grus.io"
-  url "https://github.com/chipsenkbeil/grus/archive/v0.1.0-assembly.tar.gz"
-  sha256 "f3e66acebdae379c85356f53055363cd3c4a7ea5ca9deeba27063a5a8126f6c4"
+  url "https://github.com/chipsenkbeil/grus/archive/v0.1.1.tar.gz"
+  sha256 "b07d76c8d7972747f8d4b8e60cf069f78535d3f2583d8ab09f0bba7a8d3a43f1"
   head "https://github.com/chipsenkbeil/grus.git"
 
   depends_on "sbt" => :build
@@ -10,13 +10,13 @@ class Grus < Formula
 
   def install
     ENV.java_cache
-    system "sbt", "assembly"
-    libexec.install "target/assembly/grus-0.1.0-2.10.6.jar"
-    bin.write_jar_script libexec/"grus-0.1.0-2.10.6.jar", "grus"
+    system "sbt", "'+++2.11.8 assembly'"
+    libexec.install "target/assembly/grus-0.1.1-2.11.8.jar"
+    bin.write_jar_script libexec/"grus-0.1.1-2.11.8.jar", "grus"
   end
 
   test do
     cmd = "#{bin}/grus --version 2>&1"
-    assert_match "0.1.0", shell_output(cmd, 1)
+    assert_match "0.1.1", shell_output(cmd, 1)
   end
 end
