@@ -10,7 +10,7 @@ class Grus < Formula
 
   def install
     ENV.java_cache
-    system "sbt", "'+++2.11.8 assembly'"
+    system "sbt", "+++2.11.8", "assembly"
     libexec.install "target/assembly/grus-0.1.1-2.11.8.jar"
     bin.write_jar_script libexec/"grus-0.1.1-2.11.8.jar", "grus"
   end
