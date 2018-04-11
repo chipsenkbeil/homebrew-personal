@@ -6,7 +6,7 @@ class Qes < Formula
   head "https://github.com/koekeishiya/qes.git"
   version "0.0.2"
 
-  option "with-debug" "Will build the debug version of qes"
+  option "with-debug", "Will build the debug version of qes"
 
   def install
     if build.with? "debug" then
