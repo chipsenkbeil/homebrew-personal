@@ -1,6 +1,6 @@
 # Homebrew Personal
 
-Contains personal formulas related to projects I own or work on.
+Contains personal formulas related to projects I own, work on, or use and needed a formula.
 
 ## How do I install these formulae?
 
