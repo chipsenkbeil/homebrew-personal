@@ -8,8 +8,6 @@ class ScalaDebugger < Formula
   depends_on :java => "1.7+"
 
   def install
-    # Prevents sandbox violation
-    ENV.java_cache
     system "sbt", "scalaDebuggerTool/assembly"
     libexec.install "scala-debugger-tool/target/scala-2.10/sdb-1.1.0-M3-2.10.jar"
     bin.write_jar_script libexec/"sdb-1.1.0-M3-2.10.jar", "sdb"

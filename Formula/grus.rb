@@ -9,7 +9,6 @@ class Grus < Formula
   depends_on :java => "1.7+"
 
   def install
-    ENV.java_cache
     system "sbt", "assembly"
     libexec.install "target/assembly/grus-0.1.1-2.10.6.jar"
     bin.write_jar_script libexec/"grus-0.1.1-2.10.6.jar", "grus"
