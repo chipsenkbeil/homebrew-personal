@@ -2,7 +2,7 @@ class ScalaDebugger < Formula
   desc "Scala libraries and tooling to debug Java and Scala code."
   homepage "https://www.scala-debugger.org/"
   url "https://github.com/ensime/scala-debugger/archive/v1.1.0-M3-2.tar.gz"
-  sha256 "af64bda20e440ffb3eeadec449b234f8db324ee9e09b7db5e3dfa2c3a7beb3c6"
+  sha256 "b6b20ff66a90b4e7d0f2029ee3ad1e56c3ad82995d96959471ff6e4f6b5a2306"
 
   depends_on "sbt" => :build
   depends_on :java => "1.7+"
