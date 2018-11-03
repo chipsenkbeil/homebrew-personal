@@ -20,7 +20,7 @@ class Calcurse < Formula
     # For documentation
     depends_on "asciidoc" => :build
 
-    # For general building
+    # For general building via autogen.sh
     depends_on "autoconf" => :build
     depends_on "automake" => :build
   end
@@ -28,20 +28,15 @@ class Calcurse < Formula
   def install
     if build.head? then
       system "./autogen.sh"
-
-      # NOTE: There is some bug with documentation generation in HEAD where
-      #       xmllint fails to validate calcurse.1.xml
-      system "./configure",
-        "--disable-docs",
-        "--disable-dependency-tracking",
-        "--prefix=#{prefix}"
-    else
-      system "./configure",
-        "--disable-dependency-tracking",
-        "--prefix=#{prefix}"
     end
 
-    system "make"
+    system "./configure",
+      "--disable-dependency-tracking",
+      "--prefix=#{prefix}"
+
+    # NOTE: Must specify the XML_CATALOG_FILES env so AsciiDoc files
+    #       being processed through an XML stage (via a2x) can work
+    system "make", "XML_CATALOG_FILES=/usr/local/etc/xml/catalog"
     system "make", "install"
   end
 
