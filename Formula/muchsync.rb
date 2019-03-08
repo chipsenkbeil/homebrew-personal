@@ -9,7 +9,7 @@ class Muchsync < Formula
   depends_on "notmuch"
 
   # General dependency on database according to instructions
-  depends_on "sqlite3"
+  depends_on "sqlite3" => :build
 
   # For libcypto
   # export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
