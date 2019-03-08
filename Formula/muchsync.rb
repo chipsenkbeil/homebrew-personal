@@ -16,6 +16,10 @@ class Muchsync < Formula
   depends_on "openssl"
 
   def install
+    ENV.prepend_path "PKG_CONFIG_PATH", Formula["sqlite3"].opt_libexec/"lib/pkgconfig"
+    ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl"].opt_libexec/"lib/pkgconfig"
+    ENV.prepend_create_path "PKG_CONFIG_PATH", lib/"pkgconfig"
+
     system "./configure"
     system "make", "prefix=#{prefix}"
     system "make", "prefix=#{prefix}", "install"
