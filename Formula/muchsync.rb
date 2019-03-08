@@ -5,6 +5,9 @@ class Muchsync < Formula
   sha256 "8b0afc2ce2dca636ae318659452902e26ac804d1b8b1982e74dbc4222f2155cc"
   head "http://www.muchsync.org/muchsync.git"
 
+  # Needed for configuration
+  depends_on "pkg-config" => :build
+
   # For notmuch & Xapian libray
   depends_on "notmuch"
 
@@ -13,16 +16,16 @@ class Muchsync < Formula
 
   # For libcypto
   # export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
-  depends_on "openssl"
+  depends_on "openssl" => :build
 
   def install
     ENV.prepend_path "PKG_CONFIG_PATH", Formula["sqlite3"].opt_libexec/"lib/pkgconfig"
     ENV.prepend_path "PKG_CONFIG_PATH", Formula["openssl"].opt_libexec/"lib/pkgconfig"
     ENV.prepend_create_path "PKG_CONFIG_PATH", lib/"pkgconfig"
 
-    system "./configure"
-    system "make", "prefix=#{prefix}"
-    system "make", "prefix=#{prefix}", "install"
+    system "./configure", "--prefix=#{prefix}"
+    system "make"
+    system "make", "install"
   end
 
   test do
