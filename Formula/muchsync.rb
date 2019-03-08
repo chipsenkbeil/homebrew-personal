@@ -24,8 +24,8 @@ class Muchsync < Formula
     ENV.prepend_create_path "PKG_CONFIG_PATH", lib/"pkgconfig"
 
     system "./configure", "--prefix=#{prefix}"
-    system "make", "prefix=#{prefix}"
-    system "make", "prefix=#{prefix}", "install"
+    system "make"
+    system "make", "install"
   end
 
   test do
