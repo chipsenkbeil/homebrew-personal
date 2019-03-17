@@ -17,22 +17,10 @@ class ScIm < Formula
   depends_on "libxlsxwriter"
   depends_on "chipsenkbeil/personal/libxls"
 
-  # sudo ln -s \
-  # /usr/local/Cellar/libxml2/2.9.7/lib/pkgconfig/libxml-2.0.pc \
-  # /usr/local/lib/pkgconfig/libxml-2.0.pc
-  #
-  # Can access via $(brew --prefix libxml2)/lib/pkgconfig/libxml-2.0.pc
-  #
-  # Add to src/Makefile
-  # CFLAGS += -DXLS -I/usr/local/libxls/include
-  # LDFLAGS+= -L/usr/local/libxls/lib
-  # LDLIBS += -lxlsreader
-
   def install
-    # Uncomment XLS support
-    inreplace "src/Makefile", "#CFLAGS += -DXLS", "CFLAGS += -DXLS"
-    inreplace "src/Makefile", "#LDLIBS += -lxlsreader", "LDLIBS += -lxlsreader"
-
+    # NOTE: With latest versions of sc-im, it will auto-detect support for
+    #       inclusion of -DXLS and -DXLSX_EXPORT on CFLAGS
+    #       based on if libxlsxwriter and libxls are available
     cd "src" do
       system "make", "prefix=#{prefix}"
       system "make", "prefix=#{prefix}", "install"
