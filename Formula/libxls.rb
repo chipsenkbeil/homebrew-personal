@@ -6,7 +6,7 @@ class Libxls < Formula
   head "https://github.com/libxls/libxls.git", :branch => "master"
 
   def install
-    system "./bootstrap"
+    system "./bootstrap" if build.head?
     system "./configure"
     system "make", "prefix=#{prefix}"
     system "make", "prefix=#{prefix}", "install"
