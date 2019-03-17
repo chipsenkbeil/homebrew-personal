@@ -29,13 +29,11 @@ class ScIm < Formula
   # LDLIBS += -lxlsreader
 
   def install
-    cd "src" do
-      # Uncomment XLS support
-      inreplace "Makefile" do |s|
-        s.gsub! "#CFLAGS += -DXLS", "CFLAGS += -DXLS"
-        s.gsub! "#LDLIBS += -lxlsreader", "LDLIBS += -lxlsreader"
-      end
+    # Uncomment XLS support
+    inreplace "src/Makefile", "#CFLAGS += -DXLS", "CFLAGS += -DXLS"
+    inreplace "src/Makefile", "#LDLIBS += -lxlsreader", "LDLIBS += -lxlsreader"
 
+    cd "src" do
       system "make", "prefix=#{prefix}"
       system "make", "prefix=#{prefix}", "install"
     end
