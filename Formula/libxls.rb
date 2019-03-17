@@ -1,4 +1,4 @@
-class LibXls < Formula
+class Libxls < Formula
   desc "Library to support basic XLS imports"
   homepage "https://github.com/libxls/libxls"
   url "https://github.com/libxls/libxls/releases/download/v1.5.0/libxls-1.5.0.tar.gz"
