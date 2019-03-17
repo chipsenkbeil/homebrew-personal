@@ -13,7 +13,7 @@ class Libxls < Formula
   end
 
   test do
-    output = pipe_output("#{bin}/xls2csv --version 2>/dev/null")
-    assert_equal "2", output.lines.last.chomp
+    output = pipe_output("#{bin}/xls2csv some-file 2>/dev/null")
+    assert_equal "FILE: some-file", output.lines.last.chomp
   end
 end
