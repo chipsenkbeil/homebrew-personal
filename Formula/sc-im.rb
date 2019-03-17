@@ -18,9 +18,10 @@ class ScIm < Formula
   depends_on "chipsenkbeil/personal/libxls"
 
   def install
-    # NOTE: With latest versions of sc-im, it will auto-detect support for
-    #       inclusion of -DXLS and -DXLSX_EXPORT on CFLAGS
-    #       based on if libxlsxwriter and libxls are available
+    # Uncomment basic XLS support
+    inreplace "src/Makefile", "#CFLAGS += -DXLS", "CFLAGS += -DXLS"
+    inreplace "src/Makefile", "#LDLIBS += -lxlsreader", "LDLIBS += -lxlsreader"
+
     cd "src" do
       system "make", "prefix=#{prefix}"
       system "make", "prefix=#{prefix}", "install"
