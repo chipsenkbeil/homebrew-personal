@@ -14,6 +14,7 @@ class ScIm < Formula
 
   depends_on "ncurses"
   depends_on "libxml2"
+  depends_on "libxlsxwriter"
 
   # sudo ln -s \
   # /usr/local/Cellar/libxml2/2.9.7/lib/pkgconfig/libxml-2.0.pc \
@@ -28,6 +29,12 @@ class ScIm < Formula
 
   def install
     cd "src" do
+      # Uncomment XLS support
+      inreplace "Makefile" do |s|
+        s.gsub! "#CFLAGS += -DXLS", "CFLAGS += -DXLS"
+        s.gsub! "#LDLIBS += -lxlsreader", "LDLIBS += -lxlsreader"
+      end
+
       system "make", "prefix=#{prefix}"
       system "make", "prefix=#{prefix}", "install"
     end
