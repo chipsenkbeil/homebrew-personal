@@ -15,6 +15,7 @@ class ScIm < Formula
   depends_on "ncurses"
   depends_on "libxml2"
   depends_on "libxlsxwriter"
+  depends_on "chipsenkbeil/personal/libxls"
 
   # sudo ln -s \
   # /usr/local/Cellar/libxml2/2.9.7/lib/pkgconfig/libxml-2.0.pc \
