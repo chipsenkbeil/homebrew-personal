@@ -15,7 +15,7 @@ class Notmuch < Formula
 
   # Re-enable installing with python3 bindings, which seems to be
   # missing from the stock repo formula
-  option "python3", "Will build and install bindings for python3"
+  option "with-python3", "Will build and install bindings for python3"
 
   depends_on "doxygen" => :build
   depends_on "libgpg-error" => :build
